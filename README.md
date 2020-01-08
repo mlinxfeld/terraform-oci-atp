@@ -13,26 +13,26 @@ Clone the repo from github by executing the command as follows and then go to te
 ```
 Martin-MacBook-Pro:~ martinlinxfeld$ git clone https://github.com/mlinxfeld/terraform-oci-atp.git
 Cloning into 'terraform-oci-atp'...
-remote: Enumerating objects: 121, done.
-remote: Counting objects: 100% (121/121), done.
-remote: Compressing objects: 100% (89/89), done.
-remote: Total 258 (delta 73), reused 79 (delta 32), pack-reused 137
-Receiving objects: 100% (258/258), 68.71 MiB | 23.28 MiB/s, done.
-Resolving deltas: 100% (142/142), done.
+remote: Enumerating objects: 9, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 16 (delta 0), reused 7 (delta 0), pack-reused 7
+Unpacking objects: 100% (16/16), done.
 
 Cloning into 'terraform-oci-atp'...
 Martin-MacBook-Pro:~ martinlinxfeld$ cd terraform-oci-atp/
 Martin-MacBook-Pro:terraform-oci-atp martinlinxfeld$ ls -latr
-total 16
--rw-r--r--   1 martinlinxfeld  staff     657  8 sty 11:44 atp_backup.tf
--rw-r--r--   1 martinlinxfeld  staff     619  8 sty 11:44 atp_wallet.tf
--rw-r--r--   1 martinlinxfeld  staff     230  8 sty 11:44 provider.tf
-drwxr-xr-x  12 martinlinxfeld  staff     384  8 sty 11:45 .git
-drwxr-xr-x   5 martinlinxfeld  staff     160  8 sty 11:47 ..
--rw-r--r--   1 martinlinxfeld  staff     144  8 sty 11:48 compartment.tf
--rw-r--r--   1 martinlinxfeld  staff     861  8 sty 11:51 variables.tf
--rw-r--r--   1 martinlinxfeld  staff    1538  8 sty 11:53 atp.tf
--rw-r--r--@  1 martinlinxfeld  staff       0  8 sty 11:56 README.md
+total 80
+drwxrwxrwt  11 martinlinxfeld  wheel    352  8 sty 12:52 ..
+-rw-r--r--   1 martinlinxfeld  wheel  14762  8 sty 12:52 README.md
+-rw-r--r--   1 martinlinxfeld  wheel   1299  8 sty 12:52 atp.tf
+-rw-r--r--   1 martinlinxfeld  wheel    743  8 sty 12:52 atp_backup.tf
+-rw-r--r--   1 martinlinxfeld  wheel    619  8 sty 12:52 atp_wallet.tf
+-rw-r--r--   1 martinlinxfeld  wheel    144  8 sty 12:52 compartment.tf
+-rw-r--r--   1 martinlinxfeld  wheel    239  8 sty 12:52 provider.tf
+drwxr-xr-x  10 martinlinxfeld  wheel    320  8 sty 12:52 .
+-rw-r--r--   1 martinlinxfeld  wheel    861  8 sty 12:52 variables.tf
+drwxr-xr-x  12 martinlinxfeld  wheel    384  8 sty 12:52 .git
 
 ```
 
@@ -216,15 +216,12 @@ oci_database_autonomous_database.FoggyKitchen_ATP_database: Still creating... [3
 ```
 
 ### STEP 6.
-After testing the environment you can remove the infra. You should just run *terraform destroy* (type **yes** for confirmation of the destroy phase):
+After testing the environment you can remove the ATP infra. You should just run *terraform destroy* (type **yes** for confirmation of the destroy phase):
 
 ```
 Martin-MacBook-Pro:terraform-oci-atp martinlinxfeld$ terraform destroy
 
 (...)
-
-(...)
-
  # oci_database_autonomous_database.FoggyKitchen_ATP_database will be destroyed
   - resource "oci_database_autonomous_database" "FoggyKitchen_ATP_database" {
       - admin_password           = (sensitive value)
