@@ -1,38 +1,28 @@
-resource "random_string" "autonomous_database_admin_password" {
-  length  = 16
-  special = true
+resource "oci_database_autonomous_database" "FoggyKitchen_ATP_database" {
+  admin_password           = var.atp_password
+  compartment_id           = oci_identity_compartment.FoggyKitchenCompartment.id
+  cpu_core_count           = var.FoggyKitchen_ATP_database_cpu_core_count
+  data_storage_size_in_tbs = var.FoggyKitchen_ATP_database_data_storage_size_in_tbs
+  db_name                  = var.FoggyKitchen_ATP_database_db_name
+  display_name             = var.FoggyKitchen_ATP_database_display_name
+  freeform_tags            = var.FoggyKitchen_ATP_database_freeform_tags
+  license_model            = var.FoggyKitchen_ATP_database_license_model
+#  is_free_tier             = true
 }
 
-resource "oci_database_autonomous_database" "autonomous_database" {
-  #Required
-  admin_password           = "${random_string.autonomous_database_admin_password.result}"
-  compartment_id           = "${var.compartment_ocid}"
-  cpu_core_count           = "${var.autonomous_database_cpu_core_count}"
-  data_storage_size_in_tbs = "${var.autonomous_database_data_storage_size_in_tbs}"
-  db_name                  = "${var.autonomous_database_db_name}"
-
-  #Optional
-  display_name  = "${var.autonomous_database_display_name}"
-  freeform_tags = "${var.autonomous_database_freeform_tags}"
-  license_model = "${var.autonomous_database_license_model}"
+data "oci_database_autonomous_databases" "FoggyKitchen_ATP_databases" {
+  compartment_id = oci_identity_compartment.FoggyKitchenCompartment.id
+  display_name = var.FoggyKitchen_ATP_database_display_name
 }
 
-data "oci_database_autonomous_databases" "autonomous_databases" {
-  #Required
-  compartment_id = "${var.compartment_ocid}"
-
-  #Optional
-  display_name = "${var.autonomous_database_display_name}"
+output "FoggyKitchen_ATP_database_admin_password" {
+   value = var.atp_password
 }
 
-output "autonomous_database_admin_password" {
-  value = "${random_string.autonomous_database_admin_password.result}"
-}
-
-output "autonomous_databases" {
-  value = "${data.oci_database_autonomous_databases.autonomous_databases.autonomous_databases}"
+output "FoggyKitchen_ATP_databases" {
+  value = data.oci_database_autonomous_databases.FoggyKitchen_ATP_databases.autonomous_databases
 }
 
 output "parallel_connection_string" {
-  value = ["${lookup(oci_database_autonomous_database.autonomous_database.connection_strings.0.all_connection_strings, "PARALLEL", "Unavailable")}"]
+  value = [lookup(oci_database_autonomous_database.FoggyKitchen_ATP_database.connection_strings.0.all_connection_strings, "PARALLEL", "Unavailable")]
 }

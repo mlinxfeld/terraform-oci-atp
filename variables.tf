@@ -4,38 +4,39 @@ variable "fingerprint" {}
 variable "private_key_path" {}
 variable "region" {}
 variable "compartment_ocid" {}
+variable "atp_password" {}
 
-variable "autonomous_database_cpu_core_count" {
+variable "FoggyKitchen_ATP_database_cpu_core_count" {
   default = 1
 }
 
-variable "autonomous_database_data_storage_size_in_tbs" {
+variable "FoggyKitchen_ATP_database_data_storage_size_in_tbs" {
   default = 1
 }
 
-variable "autonomous_database_db_name" {
+variable "FoggyKitchen_ATP_database_db_name" {
   default = "fkatpdb1"
 }
 
-variable "autonomous_database_backup_display_name" {
+variable "FoggyKitchen_ATP_database_backup_display_name" {
   default = "backup_fkatpdb1"
 }
 
-variable "autonomous_database_defined_tags_value" {
+variable "FoggyKitchen_ATP_database_defined_tags_value" {
   default = "value"
 }
 
-variable "autonomous_database_display_name" {
+variable "FoggyKitchen_ATP_database_display_name" {
   default = "FoggyKitchenATP"
 }
 
-variable "autonomous_database_freeform_tags" {
+variable "FoggyKitchen_ATP_database_freeform_tags" {
   default = {
-    "Department" = "IT"
+    "Owner" = "FoggyKitchen"
   }
 }
 
-variable "autonomous_database_license_model" {
+variable "FoggyKitchen_ATP_database_license_model" {
   default = "LICENSE_INCLUDED"
 }
 
