@@ -26,7 +26,6 @@ total 80
 drwxrwxrwt  11 martinlinxfeld  wheel    352  8 sty 12:52 ..
 -rw-r--r--   1 martinlinxfeld  wheel  14762  8 sty 12:52 README.md
 -rw-r--r--   1 martinlinxfeld  wheel   1299  8 sty 12:52 atp.tf
--rw-r--r--   1 martinlinxfeld  wheel    743  8 sty 12:52 atp_backup.tf
 -rw-r--r--   1 martinlinxfeld  wheel    619  8 sty 12:52 atp_wallet.tf
 -rw-r--r--   1 martinlinxfeld  wheel    144  8 sty 12:52 compartment.tf
 -rw-r--r--   1 martinlinxfeld  wheel    239  8 sty 12:52 provider.tf
@@ -112,7 +111,7 @@ Martin-MacBook-Pro:terraform-oci-atp martinlinxfeld$ terraform apply
 An execution plan has been generated and is shown below.
 
 data.oci_objectstorage_namespace.FoggyKitchen_ATP_database_backup_namespace: Refreshing state...
-oci_identity_compartment.FoggyKitchenCompartment: Refreshing state... [id=ocid1.compartment.oc1..aaaaaaaagillnk7ttj6wpdhmewpibpxc5gbmrfxdtmaa3gfgjzbudesm3tsq]
+oci_identity_compartment.FoggyKitchenCompartment: Refreshing state... [id=ocid1.compartment.oc1..aaaaaaaagillnk(...)aa3gfgjzbudesm3tsq]
 data.oci_database_autonomous_databases.FoggyKitchen_ATP_databases: Refreshing state...
 oci_objectstorage_bucket.FoggyKitchen_ATP_database_backup_bucket: Refreshing state... [id=n/fr5tvfiq2xhq/b/backup_fkatpdb1]
 
@@ -181,23 +180,7 @@ Terraform will perform the following actions:
       + used_data_storage_size_in_tbs                  = (known after apply)
     }
 
-export TF_VAR_user_ocid="ocid1.user.oc1..aaaaaaaaob4qbf27tfijwcukep6yozaoywpueuunizjie4his4vgh3jx5jxa"
-  # oci_database_autonomous_database_backup.FoggyKitchen_ATP_database_backup will be created
-  + resource "oci_database_autonomous_database_backup" "FoggyKitchen_ATP_database_backup" {
-      + autonomous_database_id = (known after apply)
-      + compartment_id         = (known after apply)
-      + database_size_in_tbs   = (known after apply)
-      + display_name           = "backup_fkatpdb1"
-      + id                     = (known after apply)
-      + is_automatic           = (known after apply)
-      + lifecycle_details      = (known after apply)
-      + state                  = (known after apply)
-      + time_ended             = (known after apply)
-      + time_started           = (known after apply)
-      + type                   = (known after apply)
-    }
-
-Plan: 3 to add, 0 to change, 0 to destroy.
+Plan: 4 to add, 0 to change, 0 to destroy.
 
 Do you want to perform these actions?
   Terraform will perform the actions described above.
@@ -292,7 +275,7 @@ Martin-MacBook-Pro:terraform-oci-atp martinlinxfeld$ terraform destroy
  # oci_database_autonomous_database.FoggyKitchen_ATP_database will be destroyed
   - resource "oci_database_autonomous_database" "FoggyKitchen_ATP_database" {
       - admin_password           = (sensitive value)
-      - compartment_id           = "ocid1.compartment.oc1..aaaaaaaagillnk7ttj6wpdhmewpibpxc5gbmrfxdtmaa3gfgjzbudesm3tsq" -> null
+      - compartment_id           = "ocid1.compartment.oc1..aaaaaaaagillnk7ttj(...)maa3gfgjzbudesm3tsq" -> null
     (...)
         ] -> null
       - cpu_core_count           = 1 -> null
@@ -306,13 +289,13 @@ Martin-MacBook-Pro:terraform-oci-atp martinlinxfeld$ terraform destroy
       - freeform_tags            = {
           - "Owner" = "FoggyKitchen"
         } -> null
-      - id                       = "ocid1.autonomousdatabase.oc1.eu-frankfurt-1.abtheljrmwdfwt7poh6mhi7dypp7fzir6ru5kqwhx6tlgvqph46y6qhkjoma" -> null
+      - id                       = "ocid1.autonomousdatabase.oc1.eu-frankfurt-1.abtheljrmw(...)7fzir6ru5kqwhx6tlgvqph46y6qhkjoma" -> null
       - is_auto_scaling_enabled  = false -> null
       - is_dedicated             = false -> null
       - is_free_tier             = false -> null
       - is_preview               = false -> null
       - license_model            = "LICENSE_INCLUDED" -> null
-      - service_console_url      = "https://adb.eu-frankfurt-1.oraclecloud.com/console/index.html?tenant_name=OCID1.TENANCY.OC1..AAAAAAAASBKTYCKNC4N4JA673CMNLDKRJ2S3GDBZ7D2HEQZZXN7PE64KSBIA&database_name=FKATPDB1&service_type=ATP" -> null
+      - service_console_url      = "https://adb.eu-frankfurt-1.oraclecloud.com/console/index.html?tenant_name=OCID1.TENANCY.OC1..AAAAAAAASBKTYCKNC4N4JA673CMNL(...)QZZXN7PE64KSBIA&database_name=FKATPDB1&service_type=ATP" -> null
       - state                    = "AVAILABLE" -> null
       - system_tags              = {} -> null
       - time_created             = "2020-01-08 10:53:19.144 +0000 UTC" -> null
@@ -323,11 +306,11 @@ Martin-MacBook-Pro:terraform-oci-atp martinlinxfeld$ terraform destroy
 
   # oci_identity_compartment.FoggyKitchenCompartment will be destroyed
   - resource "oci_identity_compartment" "FoggyKitchenCompartment" {
-      - compartment_id = "ocid1.tenancy.oc1..aaaaaaaasbktycknc4n4ja673cmnldkrj2s3gdbz7d2heqzzxn7pe64ksbia" -> null
+      - compartment_id = "ocid1.tenancy.oc1..aaaaaaaasbktycknc4n4(...)krj2s3gdbz7d2heqzzxn7pe64ksbia" -> null
       - defined_tags   = {} -> null
       - description    = "FoggyKitchen Compartment" -> null
       - freeform_tags  = {} -> null
-      - id             = "ocid1.compartment.oc1..aaaaaaaagillnk7ttj6wpdhmewpibpxc5gbmrfxdtmaa3gfgjzbudesm3tsq" -> null
+      - id             = "ocid1.compartment.oc1..aaaaaaaagillnk7t(...)xc5gbmrfxdtmaa3gfgjzbudesm3tsq" -> null
       - is_accessible  = true -> null
       - name           = "FoggyKitchenCompartment" -> null
       - state          = "ACTIVE" -> null
@@ -336,7 +319,7 @@ Martin-MacBook-Pro:terraform-oci-atp martinlinxfeld$ terraform destroy
 
 (...)
 
-Plan: 0 to add, 0 to change, 5 to destroy.
+Plan: 0 to add, 0 to change, 4 to destroy.
 
 Do you really want to destroy all resources?
   Terraform will destroy all your managed infrastructure, as shown above.
@@ -344,15 +327,15 @@ Do you really want to destroy all resources?
 
   Enter a value: yes
 
-oci_database_autonomous_database.FoggyKitchen_ATP_database: Still destroying... [id=ocid1.autonomousdatabase.oc1.eu-frankfu...7dypp7fzir6ru5kqwhx6tlgvqph46y6qhkjoma, 10s elapsed]
-oci_database_autonomous_database.FoggyKitchen_ATP_database: Still destroying... [id=ocid1.autonomousdatabase.oc1.eu-frankfu...7dypp7fzir6ru5kqwhx6tlgvqph46y6qhkjoma, 20s elapsed]
-oci_database_autonomous_database.FoggyKitchen_ATP_database: Still destroying... [id=ocid1.autonomousdatabase.oc1.eu-frankfu...7dypp7fzir6ru5kqwhx6tlgvqph46y6qhkjoma, 30s elapsed]
-oci_database_autonomous_database.FoggyKitchen_ATP_database: Still destroying... [id=ocid1.autonomousdatabase.oc1.eu-frankfu...7dypp7fzir6ru5kqwhx6tlgvqph46y6qhkjoma, 40s elapsed]
-oci_database_autonomous_database.FoggyKitchen_ATP_database: Still destroying... [id=ocid1.autonomousdatabase.oc1.eu-frankfu...7dypp7fzir6ru5kqwhx6tlgvqph46y6qhkjoma, 50s elapsed]
+oci_database_autonomous_database.FoggyKitchen_ATP_database: Still destroying... [id=ocid1.autonomousdatabase.oc1.eu-frankfu...7dypp7fz(...)tlgvqph46y6qhkjoma, 10s elapsed]
+oci_database_autonomous_database.FoggyKitchen_ATP_database: Still destroying... [id=ocid1.autonomousdatabase.oc1.eu-frankfu...7dypp7fz(...)5kqwhx6tlgvqph46y6qhkjoma, 20s elapsed]
+oci_database_autonomous_database.FoggyKitchen_ATP_database: Still destroying... [id=ocid1.autonomousdatabase.oc1.eu-frankfu...7dypp7fz(...)kqwhx6tlgvqph46y6qhkjoma, 30s elapsed]
+oci_database_autonomous_database.FoggyKitchen_ATP_database: Still destroying... [id=ocid1.autonomousdatabase.oc1.eu-frankfu...7dypp7fz(...)kqwhx6tlgvqph46y6qhkjoma, 40s elapsed]
+oci_database_autonomous_database.FoggyKitchen_ATP_database: Still destroying... [id=ocid1.autonomousdatabase.oc1.eu-frankfu...7dypp7fz(...)5kqwhx6tlgvqph46y6qhkjoma, 50s elapsed]
 oci_database_autonomous_database.FoggyKitchen_ATP_database: Destruction complete after 57s
-oci_identity_compartment.FoggyKitchenCompartment: Destroying... [id=ocid1.compartment.oc1..aaaaaaaagillnk7ttj6wpdhmewpibpxc5gbmrfxdtmaa3gfgjzbudesm3tsq]
+oci_identity_compartment.FoggyKitchenCompartment: Destroying... [id=ocid1.compartment.oc1..aaaaaaaagillnk7ttj6wpdhmewpi(...)mrfxdtmaa3gfgjzbudesm3tsq]
 oci_identity_compartment.FoggyKitchenCompartment: Destruction complete after 0s
 
-Destroy complete! Resources: 5 destroyed.
+Destroy complete! Resources: 4 destroyed.
 
 ```
