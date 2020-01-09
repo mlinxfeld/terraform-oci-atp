@@ -18,10 +18,6 @@ variable "FoggyKitchen_ATP_database_db_name" {
   default = "fkatpdb1"
 }
 
-variable "FoggyKitchen_ATP_database_backup_display_name" {
-  default = "backup_fkatpdb1"
-}
-
 variable "FoggyKitchen_ATP_database_defined_tags_value" {
   default = "value"
 }

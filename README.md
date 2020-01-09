@@ -213,6 +213,73 @@ oci_database_autonomous_database.FoggyKitchen_ATP_database: Still creating... [3
 
 (...)
 
+Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+FoggyKitchen_ATP_database_admin_password = B(...)#11
+FoggyKitchen_ATP_databases = [
+  {
+    "admin_password" = ""
+    "autonomous_container_database_id" = ""
+    "clone_type" = ""
+    "compartment_id" = "ocid1.compartment.oc1..aaaaaaaajo(...)j2goxn6xcchpx4a"
+    "connection_strings" = [
+      {
+        "all_connection_strings" = {
+          "HIGH" = "adb.ue-frankfurt-1.oraclecloud.com:1522/eo4tfsiqpxmhmow_fkatpdb1_high.atp.oraclecloud.com"
+          "LOW" = "adb.ue-frankfurt-1.oraclecloud.com:1522/eo4tfsiqpxmhmow_fkatpdb1_low.atp.oraclecloud.com"
+          "MEDIUM" = "adb.ue-frankfurt-1.oraclecloud.com:1522/eo4tfsiqpxmhmow_fkatpdb1_medium.atp.oraclecloud.com"
+          "TP" = "adb.ue-frankfurt-1.oraclecloud.com:1522/eo4tfsiqpxmhmow_fkatpdb1_tp.atp.oraclecloud.com"
+          "TPURGENT" = "adb.ue-frankfurt-1.oraclecloud.com:1522/eo4tfsiqpxmhmow_fkatpdb1_tpurgent.atp.oraclecloud.com"
+        }
+        "dedicated" = ""
+        "high" = "adb.ue-frankfurt-1.oraclecloud.com:1522/eo4tfsiqpxmhmow_fkatpdb1_high.atp.oraclecloud.com"
+        "low" = "adb.ue-frankfurt-1.oraclecloud.com:1522/eo4tfsiqpxmhmow_fkatpdb1_low.atp.oraclecloud.com"
+        "medium" = "adb.ue-frankfurt-1.oraclecloud.com:1522/eo4tfsiqpxmhmow_fkatpdb1_medium.atp.oraclecloud.com"
+      },
+    ]
+   (...)
+    ]
+    "cpu_core_count" = 1
+    "data_safe_status" = "NOT_REGISTERED"
+    "data_storage_size_in_tbs" = 1
+    "db_name" = "fkatpdb1"
+    "db_version" = "18c"
+    "db_workload" = "OLTP"
+    "defined_tags" = {}
+    "display_name" = "FoggyKitchenATP"
+    "freeform_tags" = {
+      "Owner" = "FoggyKitchen"
+    }
+    "id" = "ocid1.autonomousdatabase.oc1.fra.abyhqlj(...)vjjs4h2bjr22dkxlogo3jq"
+    "is_auto_scaling_enabled" = false
+    "is_dedicated" = false
+    "is_free_tier" = false
+    "is_preview" = false
+    "is_preview_version_with_service_terms_accepted" = false
+    "license_model" = "LICENSE_INCLUDED"
+    "lifecycle_details" = ""
+    "service_console_url" = "https://adb.ue-frankfurt-1.oraclecloud.com/console/index.html?tenant_name=OCID1.TENANCY.OC1..AAAAAAAAWPQBLFEMTLUW(...)7EM7IFTKR3VD2R3A&database_name=FKATPDB1&service_type=ATP"
+    "source" = ""
+    "source_id" = ""
+    "state" = "TERMINATED"
+    "system_tags" = {}
+    "time_created" = "2020-01-09 09:47:26.727 +0000 UTC"
+    "time_deletion_of_free_autonomous_database" = ""
+    "time_maintenance_begin" = "2020-01-12 04:00:00 +0000 UTC"
+    "time_maintenance_end" = "2020-01-12 08:00:00 +0000 UTC"
+    "time_reclamation_of_free_autonomous_database" = ""
+    "used_data_storage_size_in_tbs" = 1
+    "whitelisted_ips" = []
+  },
+]
+parallel_connection_string = [
+  "Unavailable",
+]
+wallet_password = [
+  "AYGBp(...)3N+dno",
+]
 ```
 
 ### STEP 6.
