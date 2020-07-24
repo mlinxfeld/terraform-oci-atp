@@ -36,3 +36,6 @@ variable "FoggyKitchen_ATP_database_license_model" {
   default = "LICENSE_INCLUDED"
 }
 
+variable "FoggyKitchen_ATP_database_db_version" {
+  default = "19c"
+}

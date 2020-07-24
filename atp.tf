@@ -7,6 +7,7 @@ resource "oci_database_autonomous_database" "FoggyKitchen_ATP_database" {
   display_name             = var.FoggyKitchen_ATP_database_display_name
   freeform_tags            = var.FoggyKitchen_ATP_database_freeform_tags
   license_model            = var.FoggyKitchen_ATP_database_license_model
+  db_version               = var.FoggyKitchen_ATP_database_db_version
   is_data_guard_enabled    = false
 #  is_free_tier             = true
 }
