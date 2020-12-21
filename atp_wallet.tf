@@ -3,13 +3,13 @@ resource "random_string" "wallet_password" {
   special = true
 }
 
-data "oci_database_autonomous_database_wallet" "FoggyKitchen_ATP_database_wallet" {
+resource "oci_database_autonomous_database_wallet" "FoggyKitchen_ATP_database_wallet" {
   autonomous_database_id = oci_database_autonomous_database.FoggyKitchen_ATP_database.id
   password               = random_string.wallet_password.result
 }
 
 resource "local_file" "FoggyKitchen_ATP_database_wallet_file" {
-  content  = data.oci_database_autonomous_database_wallet.FoggyKitchen_ATP_database_wallet.content
+  content  = oci_database_autonomous_database_wallet.FoggyKitchen_ATP_database_wallet.content
   filename = "path.module/foggykitchen_atp_wallet.zip"
 }
 
