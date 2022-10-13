@@ -96,7 +96,7 @@ variables:
           - local_data_guard_enabled
           - true   
 
-  local_data_guard_enabled:
+  remote_data_guard_enabled:
     type: boolean
     title: "Cross-Region Autonomous DataGuard enabled?"
     description: "Choose if you want to deploy Cross-Region Autonomous DataGuard for your ATP Database."
