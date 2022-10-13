@@ -3,39 +3,47 @@ variable "user_ocid" {}
 variable "fingerprint" {}
 variable "private_key_path" {}
 variable "region" {}
+variable "primaryregion" {}
+variable "standbyregion" {}
 variable "compartment_ocid" {}
 variable "atp_password" {}
 
-variable "FoggyKitchen_ATP_database_cpu_core_count" {
+variable "database_cpu_core_count" {
+  default = 2
+}
+
+variable "database_data_storage_size_in_tbs" {
   default = 1
 }
 
-variable "FoggyKitchen_ATP_database_data_storage_size_in_tbs" {
-  default = 1
-}
-
-variable "FoggyKitchen_ATP_database_db_name" {
+variable "database_db_name" {
   default = "fkatpdb1"
 }
 
-variable "FoggyKitchen_ATP_database_defined_tags_value" {
+variable "database_defined_tags_value" {
   default = "value"
 }
 
-variable "FoggyKitchen_ATP_database_display_name" {
-  default = "FoggyKitchenATP"
+variable "database_display_name" {
+  default = "FoggyKitchenATP_primary"
 }
 
-variable "FoggyKitchen_ATP_database_freeform_tags" {
-  default = {
-    "Owner" = "FoggyKitchen"
-  }
+variable "remote_standby_database_display_name" {
+  default = "FoggyKitchenATP_remote_standby"
 }
 
-variable "FoggyKitchen_ATP_database_license_model" {
+variable "database_license_model" {
   default = "LICENSE_INCLUDED"
 }
 
-variable "FoggyKitchen_ATP_database_db_version" {
+variable "database_db_version" {
   default = "19c"
+}
+
+variable "remote_data_guard_enabled" {
+  default = false
+}
+
+variable "local_data_guard_enabled" {
+  default = false
 }
