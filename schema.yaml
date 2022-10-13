@@ -30,6 +30,7 @@ variableGroups:
         - show_advanced
   variables:
   - database_cpu_core_count
+  - database_data_storage_size_in_tbs
   - database_db_name
   - database_display_name
   - database_license_model
@@ -86,7 +87,7 @@ variables:
     default: false
 
   primaryregion:
-    title: "Region"
+    title: "Primary Region (Local Autonomous DataGuard)"
     description: "Choose Region where you deploy your Local Autonomous DataGuard for your ATP Database."
     type: oci:identity:region:name
     required: true
@@ -104,7 +105,7 @@ variables:
     default: false
 
   standbyregion:
-    title: "Region"
+    title: "Standby Region (Cross-Region Autonomous DataGuard)"
     description: "Choose Region where you deploy your Cross-Region Autonomous DataGuard for your ATP Database,"
     type: oci:identity:region:name
     required: true
@@ -125,6 +126,16 @@ variables:
     default: 1
     title: "ATP Database CPU count"
     description: "Choose number of CPU for your ATP Database."
+
+  database_data_storage_size_in_tbs:
+    type: number
+    required: false
+    minimum: 1
+    maximum: 128
+    multipleOf: 1
+    default: 1
+    title: "ATP Database Data Storage Size in TB"
+    description: "Choose ATP Database Data Storage Size in TB."
 
   database_db_name:
     type: string
