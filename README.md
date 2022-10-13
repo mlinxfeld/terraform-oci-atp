@@ -6,7 +6,29 @@ In this repository, I have documented my hands on experience with Terrafrom for 
 
 ## How to use code 
 
-### STEP 1.
+### Deploy Using Oracle Resource Manager
+
+1. Click [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/mlinxfeld/terraform-oci-atp/releases/latest/download/terraform-oci-atp-stack-latest.zip)
+
+    If you aren't already signed in, when prompted, enter the tenancy and user credentials.
+
+2. Review and accept the terms and conditions.
+
+3. Select the region where you want to deploy the stack.
+
+4. Follow the on-screen prompts and instructions to create the stack.
+
+5. After creating the stack, click **Terraform Actions**, and select **Plan**.
+
+6. Wait for the job to be completed, and review the plan.
+
+    To make any changes, return to the Stack Details page, click **Edit Stack**, and make the required changes. Then, run the **Plan** action again.
+
+7. If no further changes are necessary, return to the Stack Details page, click **Terraform Actions**, and select **Apply**. 
+
+### Deploy Using the Terraform CLI
+
+#### STEP 1.
 
 Clone the repo from github by executing the command as follows and then go to terraform-oci-atp directory:
 
@@ -23,19 +45,20 @@ Cloning into 'terraform-oci-atp'...
 Martin-MacBook-Pro:~ martinlinxfeld$ cd terraform-oci-atp/
 Martin-MacBook-Pro:terraform-oci-atp martinlinxfeld$ ls -latr
 total 80
-drwxrwxrwt  11 martinlinxfeld  wheel    352  8 sty 12:52 ..
--rw-r--r--   1 martinlinxfeld  wheel  14762  8 sty 12:52 README.md
--rw-r--r--   1 martinlinxfeld  wheel   1299  8 sty 12:52 atp.tf
--rw-r--r--   1 martinlinxfeld  wheel    619  8 sty 12:52 atp_wallet.tf
--rw-r--r--   1 martinlinxfeld  wheel    144  8 sty 12:52 compartment.tf
--rw-r--r--   1 martinlinxfeld  wheel    239  8 sty 12:52 provider.tf
-drwxr-xr-x  10 martinlinxfeld  wheel    320  8 sty 12:52 .
--rw-r--r--   1 martinlinxfeld  wheel    861  8 sty 12:52 variables.tf
-drwxr-xr-x  12 martinlinxfeld  wheel    384  8 sty 12:52 .git
+drwxr-xr-x   5 mlinxfeld  mlinxfeld   160 Jan 18  2022 ..
+-rw-r--r--@  1 mlinxfeld  mlinxfeld 16436 Jan 18  2022 README.md
+-rw-r--r--   1 mlinxfeld  mlinxfeld   999 Oct  3 11:57 provider.tf
+-rw-r--r--   1 mlinxfeld  mlinxfeld   290 Oct  3 12:03 compartment.tf
+-rw-r--r--   1 mlinxfeld  mlinxfeld   424 Oct  3 14:16 outputs.tf
+-rw-r--r--   1 mlinxfeld  mlinxfeld   897 Oct  3 14:30 variables.tf
+-rw-r--r--   1 mlinxfeld  mlinxfeld  1541 Oct  3 14:31 atp.tf
+-rw-r--r--   1 mlinxfeld  mlinxfeld   399 Oct  3 14:32 datasources.tf
+-rw-r--r--   1 mlinxfeld  mlinxfeld   695 Oct  3 14:32 atp_wallet.tf
+-rw-r--r--   1 mlinxfeld  mlinxfeld  4358 Oct 13 11:00 schema.yaml
 
 ```
 
-### STEP 2.
+#### STEP 2.
 
 Within web browser go to URL: https://www.terraform.io/downloads.html. Find your platform and download the latest version of your terraform runtime. Add directory of terraform binary into PATH and check terraform version:
 
@@ -50,7 +73,7 @@ Your version of Terraform is out of date! The latest version
 is 0.12.17. You can update by downloading from https://www.terraform.io/downloads.html
 ```
 
-### STEP 3. 
+#### STEP 3. 
 Next create environment file with TF_VARs (remember about your ATP password):
 
 ```
@@ -68,7 +91,7 @@ export TF_VAR_atp_password='<your_atp_passowrd>'
 Martin-MacBook-Pro:terraform-oci-atp martinlinxfeld$ source setup_oci_tf_vars.sh
 ```
 
-### STEP 4.
+#### STEP 4.
 Run *terraform init* with upgrade option just to download the lastest neccesary providers:
 
 ```
@@ -102,7 +125,7 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-### STEP 5.
+#### STEP 5.
 Run *terraform apply* to provision the content of this lesson (type **yes** to confirm the the apply phase):
 
 ```
@@ -265,7 +288,7 @@ wallet_password = [
 ]
 ```
 
-### STEP 6.
+#### STEP 6.
 After testing the environment you can remove the ATP infra. You should just run *terraform destroy* (type **yes** for confirmation of the destroy phase):
 
 ```

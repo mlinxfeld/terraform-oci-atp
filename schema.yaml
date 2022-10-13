@@ -1,0 +1,170 @@
+title: "FoggyKitchen.com - Terraform OCI ATP."
+description: "FoggyKitchen.com - Terraform OCI ATP."
+stackDescription: "FoggyKitchen.com - Terraform OCI ATP."
+schemaVersion: 1.1.0
+version: "20201028"
+locale: "en"
+
+variableGroups:
+- title: "General Configuration"
+  visible: false
+  variables:
+  - tenancy_ocid
+  - region
+  - database_defined_tags_value
+  
+- title: "Required Configuration"
+  visible: true  
+  variables:
+  - compartment_ocid
+  - atp_password
+  - local_data_guard_enabled
+  - primaryregion
+  - remote_data_guard_enabled
+  - standbyregion
+  - show_advanced 
+
+- title: "ATP Optional Configuration"
+  visible: 
+      and:
+        - show_advanced
+  variables:
+  - database_cpu_core_count
+  - database_db_name
+  - database_display_name
+  - database_license_model
+  - database_db_version
+  - remote_standby_database_display_name
+
+variables:
+
+  show_advanced:
+    type: boolean
+    title: "Show advanced options?"
+    description: "Shows advanced options."
+    visible: true
+    default: false
+
+  # General Configuration
+
+  tenancy_ocid:
+    title: "Tenancy ID"
+    description: "The Oracle Cloud Identifier (OCID) for your tenancy"
+    type: string
+    required: true
+    visibile: false
+
+  region:
+    title: "Region"
+    description: "Choose Region where you deploy your ATP Database"
+    type: oci:identity:region:name
+    required: true
+    visibile: true
+
+  atp_password:
+    type: password
+    required: true
+    visibile: true
+    title: "ATP Database Password for ADMIN user."
+    description: "The password must start with a letter, and it can contain letters (uppercase, lowercase), numbers, and the symbols _ $ # ($ symbol cannot be the last character)."
+    minLength: 12
+    maxLength: 30
+    pattern: ^[A-Za-z][A-Za-z0-9_#\$]+[A-Za-z0-9_#]$ 
+
+  compartment_ocid:
+    title: "Compartment OCID"
+    description: "Choose Comparment where you deploy your ATP Database"
+    type: oci:identity:compartment:id
+    required: true
+    visibile: true
+
+  local_data_guard_enabled:
+    type: boolean
+    title: "Local Autonomous DataGuard enabled?"
+    description: "Choose if you want to deploy Local Autonomous DataGuard for your ATP Database."
+    visible: true
+    default: false
+
+  primaryregion:
+    title: "Region"
+    description: "Choose Region where you deploy your Local Autonomous DataGuard for your ATP Database."
+    type: oci:identity:region:name
+    required: true
+    visible: 
+       and:  
+        - eq:
+          - local_data_guard_enabled
+          - true   
+
+  local_data_guard_enabled:
+    type: boolean
+    title: "Cross-Region Autonomous DataGuard enabled?"
+    description: "Choose if you want to deploy Cross-Region Autonomous DataGuard for your ATP Database."
+    visible: true
+    default: false
+
+  standbyregion:
+    title: "Region"
+    description: "Choose Region where you deploy your Cross-Region Autonomous DataGuard for your ATP Database,"
+    type: oci:identity:region:name
+    required: true
+    visible: 
+       and:  
+        - eq:
+          - remote_data_guard_enabled
+          - true  
+
+  # Optional Configuration
+
+  database_cpu_core_count:
+    type: number
+    required: false
+    minimum: 1
+    maximum: 128
+    multipleOf: 1
+    default: 1
+    title: "ATP Database CPU count"
+    description: "Choose number of CPU for your ATP Database."
+
+  database_db_name:
+    type: string
+    title: "ATP Database Name"
+    description: "Choose ATP Database Name."
+    required: false
+
+  database_display_name:
+    type: string
+    title: "ATP Database Display Name"
+    description: "Choose ATP Database Display Name."
+    required: false
+
+  database_license_model:
+    type: enum
+    required: false
+    visible: true
+    title: "ATP Database License Model"
+    description: "Choose ATP Database License Model."
+    default: "LICENSE_INCLUDED"
+    enum:
+      - "LICENSE_INCLUDED"
+      - "BRING_YOUR_OWN_LICENSE"
+
+  database_db_version:
+    type: enum
+    required: false
+    default: "19c"
+    title: "ATP Database Version"
+    description: "Choose ATP Database version."
+    enum:
+      - "19c"
+
+  remote_standby_database_display_name:
+    type: string
+    title: "ATP Cross-Region Standby Database Display Name"
+    description: "Choose ATP Cross-Region Standby Database Display Name."
+    required: false
+    visible: 
+       and:  
+        - eq:
+          - remote_data_guard_enabled
+          - true    
