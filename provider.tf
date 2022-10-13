@@ -10,7 +10,7 @@ terraform {
 provider "oci" {
   alias            = "primaryregion"
   tenancy_ocid     = var.tenancy_ocid
-  region           = var.primaryregion
+  region           = local.primaryregion
   fingerprint      = var.fingerprint
   user_ocid        = var.user_ocid
   private_key_path = var.private_key_path
@@ -19,7 +19,7 @@ provider "oci" {
 provider "oci" {
   alias            = "standbyregion"
   tenancy_ocid     = var.tenancy_ocid
-  region           = var.standbyregion
+  region           = local.standbyregion
   fingerprint      = var.fingerprint
   user_ocid        = var.user_ocid
   private_key_path = var.private_key_path
