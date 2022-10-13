@@ -3,10 +3,15 @@ variable "user_ocid" {}
 variable "fingerprint" {}
 variable "private_key_path" {}
 variable "region" {}
-variable "primaryregion" {}
-variable "standbyregion" {}
 variable "compartment_ocid" {}
 variable "atp_password" {}
+
+variable "primaryregion" {
+  default = ""
+}
+variable "standbyregion" {
+  default = ""
+}
 
 variable "database_cpu_core_count" {
   default = 1
