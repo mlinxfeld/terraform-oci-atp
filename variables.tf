@@ -9,7 +9,7 @@ variable "compartment_ocid" {}
 variable "atp_password" {}
 
 variable "database_cpu_core_count" {
-  default = 2
+  default = 1
 }
 
 variable "database_data_storage_size_in_tbs" {
