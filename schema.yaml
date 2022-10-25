@@ -20,7 +20,6 @@ variableGroups:
   - compartment_ocid
   - atp_password
   - local_data_guard_enabled
-  - primaryregion
   - remote_data_guard_enabled
   - standbyregion
   - show_advanced 
