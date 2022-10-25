@@ -2,7 +2,7 @@
 
 ## Project description
 
-In this repository, I have documented my hands on experience with Terrafrom for the purpose of OCI ATP deployment. This set of HCL based Terraform files whioch can customized according to any requirements.   
+In this repository, I have documented my hands on experience with Terrafrom for the purpose of OCI ATP deployment. This set of HCL based Terraform files which can customized according to any requirements.   
 
 ## How to use code 
 

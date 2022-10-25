@@ -12,6 +12,7 @@ variableGroups:
   - tenancy_ocid
   - region
   - database_defined_tags_value
+  - primaryregion
   
 - title: "Required Configuration"
   visible: true  
@@ -85,17 +86,6 @@ variables:
     description: "Choose if you want to deploy Local Autonomous DataGuard for your ATP Database."
     visible: true
     default: false
-
-  primaryregion:
-    title: "Primary Region (Local Autonomous DataGuard)"
-    description: "Choose Region where you deploy your Local Autonomous DataGuard for your ATP Database."
-    type: oci:identity:region:name
-    required: true
-    visible: 
-       and:  
-        - eq:
-          - local_data_guard_enabled
-          - true   
 
   remote_data_guard_enabled:
     type: boolean
