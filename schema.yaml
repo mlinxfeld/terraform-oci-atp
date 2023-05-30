@@ -20,7 +20,8 @@ variableGroups:
   - compartment_ocid
   - atp_password
   - local_data_guard_enabled
-  - remote_data_guard_enabled
+  - cross_region_disaster_recovery_enabled
+  - cross_region_data_guard_enabled
   - standbyregion
   - show_advanced 
 
@@ -86,10 +87,17 @@ variables:
     visible: true
     default: false
 
-  remote_data_guard_enabled:
+  cross_region_disaster_recovery_enabled:
+    type: boolean
+    title: "Cross-Region Disaster Recovery enabled?"
+    description: "Choose if you want to create Cross-Region Standby Autonomous Database based on Backup Recovery."
+    visible: true
+    default: false
+
+  cross_region_data_guard_enabled:
     type: boolean
     title: "Cross-Region Autonomous DataGuard enabled?"
-    description: "Choose if you want to deploy Cross-Region Autonomous DataGuard for your ATP Database."
+    description: "Choose if you want to deploy Cross-Region Standby Autonomous Database based on Autonomous DataGuard."
     visible: true
     default: false
 
@@ -99,10 +107,13 @@ variables:
     type: oci:identity:region:name
     required: true
     visible: 
-       and:  
+       or:  
         - eq:
           - remote_data_guard_enabled
           - true  
+        - eq:
+          - cross_region_disaster_recovery_enabled
+          - true
 
   # Optional Configuration
 
@@ -164,7 +175,10 @@ variables:
     description: "Choose ATP Cross-Region Standby Database Display Name."
     required: false
     visible: 
-       and:  
+       or:  
         - eq:
-          - remote_data_guard_enabled
+          - cross_region_data_guard_enabled
+          - true
+        - eq:
+          - cross_region_disaster_recovery_enabled
           - true    

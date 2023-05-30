@@ -1,7 +1,7 @@
 variable "tenancy_ocid" {}
-variable "user_ocid" {}
-variable "fingerprint" {}
-variable "private_key_path" {}
+#variable "user_ocid" {}
+#variable "fingerprint" {}
+#variable "private_key_path" {}
 variable "region" {}
 variable "compartment_ocid" {}
 variable "atp_password" {}
@@ -45,10 +45,14 @@ variable "database_db_version" {
   default = "19c"
 }
 
-variable "remote_data_guard_enabled" {
-  default = false
+variable "cross_region_data_guard_enabled" {
+  default = true
+}
+
+variable "cross_region_disaster_recovery_enabled" {
+  default = true
 }
 
 variable "local_data_guard_enabled" {
-  default = false
+  default = true
 }
