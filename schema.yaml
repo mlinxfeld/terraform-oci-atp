@@ -102,8 +102,8 @@ variables:
     default: false
 
   standbyregion:
-    title: "Standby Region (Cross-Region Autonomous DataGuard)"
-    description: "Choose Region where you deploy your Cross-Region Autonomous DataGuard for your ATP Database,"
+    title: "Standby Region (Cross-Region Disaster Recovery or Autonomous DataGuard)"
+    description: "Choose Standby Region for Backup-based Disaster Recovery or Cross-Region Autonomous DataGuard of Primary Autonomous Database,"
     type: oci:identity:region:name
     required: true
     visible: 
