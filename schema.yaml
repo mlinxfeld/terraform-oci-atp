@@ -109,7 +109,7 @@ variables:
     visible: 
        or:  
         - eq:
-          - remote_data_guard_enabled
+          - cross_region_data_guard_enabled
           - true  
         - eq:
           - cross_region_disaster_recovery_enabled
