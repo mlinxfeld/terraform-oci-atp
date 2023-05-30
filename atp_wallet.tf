@@ -1,12 +1,14 @@
 resource "random_string" "wallet_password" {
-  length  = 16
-  special = true
+  length           = 16
+  special          = true
+  override_special = "-.!"
 }
 
 resource "oci_database_autonomous_database_wallet" "FoggyKitchen_ATP_primary_database_wallet" {
   provider               = oci.primaryregion
   autonomous_database_id = oci_database_autonomous_database.FoggyKitchen_ATP_primary_database.id
   password               = random_string.wallet_password.result
+  base64_encode_content  = "true"
 }
 
 resource "local_file" "FoggyKitchen_ATP_primary_database_wallet_file" {

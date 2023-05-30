@@ -9,3 +9,4 @@ output "FoggyKitchen_ATP_databases" {
 output "parallel_connection_string" {
   value    = [lookup(oci_database_autonomous_database.FoggyKitchen_ATP_primary_database.connection_strings.0.all_connection_strings, "PARALLEL", "Unavailable")]
 }
+
